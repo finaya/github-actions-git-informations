@@ -5,6 +5,11 @@ branding:
   icon: feather
   color: gray-dark
 
+# Composite, not docker: a docker action builds its image on every job, pulling alpine from
+# Docker Hub anonymously, and a burst of builds hits the pull rate limit (429).
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: composite
+  steps:
+    - name: Set RELEASE_VERSION and GITOPS_BRANCH
+      shell: bash
+      run: bash -x "$GITHUB_ACTION_PATH/entrypoint.sh"

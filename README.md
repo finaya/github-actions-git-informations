@@ -2,6 +2,8 @@
 
 GitHub action used to get git repository informations
 
+Composite action: roda o `entrypoint.sh` com o bash do runner, sem imagem Docker. Teste local: `sh tests/entrypoint.test.sh`.
+
 ## Inputs
 
 There are no inputs for this GitHub action
@@ -22,7 +24,7 @@ The list o env vars generated using this GitHub action:
 ```yaml
       # Example using this actions
       - name: Get git repository informations
-        uses: platformbuilders/github-actions-git-informations@master
+        uses: finaya/github-actions-git-informations@<sha> # master
 
       # Example generated env vars
       - name: Set up JDK 11
